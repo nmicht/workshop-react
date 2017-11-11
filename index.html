@@ -420,6 +420,70 @@ setDuration(minutes) {
       <pre><code>currentDuration: this.setDuration(props.pomodoro),</code></pre>
     </section>
 
+    <section>
+      <h3>¿Y los botones?</h3>
+      Ahora, ya que tenemos el timer necesitamos un botón que lo active.
+      <pre><code data-trim>
+<div>
+  <button>
+    Start
+  </button>
+  <button>
+    Reset
+  </button>
+</div>
+      </code></pre>
+    </section>
+
+    <section>
+      <h3>Hagamos que inicie el counter</h3>
+      A nuestro botón, le ponemos el evento
+      <pre><code>onClick={this.handleStartClick}</code></pre>
+      Y en nuestra clase agregamos el método
+      <pre><code data-trim>
+handleStartClick = () => {
+   const intervalId = setInterval( () => {
+     console.log('corriendo intervalo');
+   }, 1000);
+   this.setState({ intervalId });
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h3>Timer</h3>
+      <pre><code data-trim>
+timer = () => {
+  this.setState((state) => {
+      const seconds = state.currentDuration.asSeconds();
+      if (seconds <= 1) {
+          clearInterval(state.intervalId);
+          // Debemos cambiar al nuevo break y aumentar el contador de breaks
+      }
+      return {
+        currentDuration: moment.duration(seconds - 1, 'seconds')
+      };
+  });
+}
+      </code></pre>
+      <em>Tip: Cuando retornas en la función setState el objeto se va a mergear
+        con el state actual.</em>
+    </section>
+
+    <section>
+      Al counter le mandamos el currentDuration para hacerlo dinamico
+      <pre><code><Counter time={this.state.currentDuration.asMilliseconds()} /></code></pre>
+    </section>
+
+    <section>
+      Modificamos el handle del click para ejecutar nuestro timer
+      <pre><code data-trim>
+handleStartClick = () => {
+   const intervalId = setInterval( this.timer, 1000);
+   this.setState({ intervalId });
+}
+      </code></pre>
+    </section>
     </div>
   </div>
 
