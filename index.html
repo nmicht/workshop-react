@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="reveal.js/css/reveal.css">
   <link rel="stylesheet" href="reveal.js/css/theme/simple.css">
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 
 
   <!-- Theme used for syntax highlighting of code -->
@@ -72,8 +73,8 @@
         <h3>Instalación</h3>
         Instalar <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a>
         <pre><code data-trim>npm install -g create-react-app</code></pre>
-        <em>Tip: <strong>-g</strong> lo utilizamos para indicar que será una
-        instalación global.</em>
+        <p class="tip"><strong>-g</strong> lo utilizamos para indicar que será una
+        instalación global.</p>
       </section>
 
       <section>
@@ -129,7 +130,7 @@ mkdir Counter
             </code></pre>
           </li>
         </ol>
-        <em>Tip: Nuestro componente por estándar se define en CamelCase.</em>
+        <p class="tip">Nuestro componente por estándar se define en CamelCase.</p>
       </section>
 
       <section>
@@ -146,7 +147,7 @@ touch Counter.js
             <pre><code data-trim>touch index.js</code></pre>
           </li>
         </ol>
-        <em>Tip: ReactJS cuando hace un import de un folder, busca un index.js</em>
+        <p class="tip">ReactJS cuando hace un import de un folder, busca un index.js</p>
       </section>
 
       <section>
@@ -228,6 +229,26 @@ const Counter = (props) => {
       </section>
 
       <section>
+        <h3>PropTypes</h3>
+        <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">PropTypes</a>
+        es la definición de las propiedades que tendrá tu componente, para
+        hacer claro/documentable tu código.<br>
+        Antes eran parte de React, pero ahora es decisión del developer, por lo
+        cual tienes que instalarlo como una dependencia.
+        <pre><code>npm install prop-types --save</code></pre>
+      </section>
+
+      <section>
+        Importamos el módulo
+        <pre><code>import PropTypes from 'prop-types';</code></pre>
+        Describimos nuestros props
+        <pre><code data-trim>
+Counter.propTypes = {
+  time: PropTypes.number.isRequired,
+}
+        </code></pre>
+      </section>
+      <section>
         <h3>Destructurización</h3>
         Para simplificar el uso de los props usamos la destructurización, que
         extrae los valores del objeto.
@@ -248,7 +269,7 @@ cd components
 mkdir Pomodoro
         </code></pre>
       </ol>
-      <em>Tip: Nuestro componente por estándar se define en CamelCase.</em>
+      <p class="tip">Nuestro componente por estándar se define en CamelCase.</p>
     </section>
 
     <section>
@@ -265,7 +286,7 @@ touch Pomodoro.js
           <pre><code data-trim>touch index.js</code></pre>
         </li>
       </ol>
-      <em>Tip: ReactJS cuando hace un import de un folder, busca un index.js</em>
+      <p class="tip">ReactJS cuando hace un import de un folder, busca un index.js</p>
     </section>
 
     <section>
@@ -325,7 +346,7 @@ export default App;
         <li>Dentro del folder de Pomodorito instalamos la biblioteca</li>
         <pre><code>npm install moment --save</code></pre>
       </ol>
-      <em>Tip: --save es para que se guarde como dependencia en nuestro proyecto.</em>
+      <p class="tip"><strong>--save</strong> es para que se guarde como dependencia en nuestro proyecto.</p>
     </section>
 
     <section>
@@ -398,7 +419,7 @@ setDuration(minutes) {
 }
       </code></pre>
       La agregamos en nuestra clase Pomodoro.
-      <em>No olvides importar el módulo de moment.</em>
+      <p class="tip">No olvides importar el módulo de moment.</p>
     </section>
 
     <section>
@@ -466,8 +487,8 @@ timer = () => {
   });
 }
       </code></pre>
-      <em>Tip: Cuando retornas en la función setState el objeto se va a mergear
-        con el state actual.</em>
+      <p class="tip">Cuando retornas en la función setState el objeto se va a mergear
+        con el state actual.</p>
     </section>
 
     <section>
@@ -533,6 +554,11 @@ finishTime = () => {
       Ahora nuestro timer deberá ejecutar el finishTime
       <pre><code>return this.finishTime();</code></pre>
     </section>
+
+    <section>
+
+    </section>
+
     </div>
   </div>
 
