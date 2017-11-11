@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>ReactJS 101</title>
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/simple.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Presentation -->
+      <section>
+        <h2>Primeros Pasos</h2>
+        <h1>ReactJS 101</h1>
+      </section>
+
+      <section>
+        <h3>¿Por qué ReactJS?</h3>
+        <ul>
+          <li>Angular VS React</li>
+          <li>¿Esta de moda?</li>
+          <li>Metodología de componentes</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Michelle Torres</h3>
+        Lead Software Engineer at TiempoDevelopment • Professor at UdG •
+        Founder & CTO at @CORBmx • Speaker • Free software advocate • Crazy
+        <ul style="list-style-type: none">
+          <li><i class="fa fa-envelope" aria-hidden="true"></i> michelle.torres@corb.mx</li>
+          <li><i class="fa fa-facebook-square" aria-hidden="true"></i> fb.com/michelletorres.mx</li>
+          <li><i class="fa fa-twitter-square" aria-hidden="true"></i> nmicht</li>
+          <li><i class="fa fa-github-square" aria-hidden="true"></i> nmicht</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    slideNumber: true,
+    dependencies: [
+      { src: 'reveal.js/plugin/markdown/marked.js' },
+      { src: 'reveal.js/plugin/markdown/markdown.js' },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+  </script>
+</body>
+</html>
