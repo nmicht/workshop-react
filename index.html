@@ -556,7 +556,79 @@ finishTime = () => {
     </section>
 
     <section>
+      <h3>Push Notifications</h3>
+      Para hacer que nuestro browser arroje notificaciones al terminar un break
+      instalaremos <a href="https://pushjs.org/">push.js</a>.
+      <pre><code>npm install push.js --save</code></pre>
+    </section>
 
+    <section>
+      Creamos un método para manejar las notificaciones dentro de nuestro App.js
+      <pre><code data-trim>
+handleTimerFinish = (finishedTime) => {
+  Push.create(`Terminó tu ${finishedTime}`, {
+    body: 'Da click aquí para ir al Pomodorito',
+    icon: 'icon.png',
+    timeout: 4000,
+    onClick: function() {
+      window.focus();
+      this.close();
+    }
+  });
+}
+      </code></pre>
+    </section>
+
+    <section>
+      Mandamos como props al Pomodoro el callback
+      <pre><code data-trim>
+<Pomodoro
+     pomodoro={2}
+     shortBreak={1}
+     longBreak={3}
+     onTimerFinish={this.handleTimerFinish}
+/>
+      </code></pre>
+      y no olvides agregarlo a tus PropTypes
+      <pre><code>onTimerFinish: PropTypes.func,</code></pre>
+    </section>
+
+    <section>
+      Cuando se termine nuestro tiempo, queremos ejecutar un callback que se
+      encargue de lanzar la notificación.<br>
+      Entonces agregaremos en el método finishTime la llamada.
+      <pre><code>this.props.onTimerFinish(this.state.currentBreak);</code></pre>
+    </section>
+
+    <section>
+      Ahora hagamos que se vea bonito
+    </section>
+
+    <section>
+      Existen muchos paquetes para dar estilo, sin embargo, para terminar el
+      workshop implementaremos CSS de la manera sencilla y rápida.
+    </section>
+
+    <section>
+      Creamos un objeto de styles
+      <pre><code data-trim>
+const styles = {
+  fontSize: "42px",
+  backgroundColor: "rgb(225, 225, 225)",
+  padding: "35px",
+  display: "inline-block",
+  margin: "40px",
+}
+      </code></pre>
+    </section>
+
+    <section>
+      Asignamos el style a través de CSS inline
+      <pre><code><span style={styles}>{moment(time).format('mm:ss')}</span></code></pre>
+    </section>
+
+    <section>
+      GRACIAS
     </section>
 
     </div>

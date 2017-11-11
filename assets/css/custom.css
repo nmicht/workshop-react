@@ -1,0 +1,16 @@
+.tip {
+  background-color: rgba(23, 162, 184, 0.2);
+  font-style: italic !important;
+  font-size: 0.8em !important;
+  color: #757272;
+}
+
+.tip:before {
+  font-family: FontAwesome;
+  content: "\f05a";
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-style: normal !important;
+  color: rgb(23, 162, 184);
+}
