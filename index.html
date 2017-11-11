@@ -353,12 +353,72 @@ export default Counter;
     </section>
 
     <section>
-      <h3>Constructor de un componente</h3>
+      <h3>State Component</h3>
+      Convertimos nuestro componente stateless
+      Pomodoro a un componente con estado.
       <pre><code data-trim>
+import React from 'react';
+import Counter from '../Counter';
 
+class Pomodoro extends React.Component {
+  render() {
+    return (
+      <div>
+          <Counter time={15000} />
+          { /*botones*/ }
+      </div>
+    );
+  }
+}
+
+export default Pomodoro;
       </code></pre>
     </section>
 
+    <section>
+      <h3>Constructor de un componente</h3>
+      <pre><code data-trim>
+constructor(props) {
+    super(props);
+
+    this.state = {
+      intervalId: null, //ID for the interval to update the time
+      breaksCount: 0, //Count for each "time break"
+      currentBreak: 'pomodoro', //Type of current "time break"
+    }
+}
+      </code></pre>
+    </section>
+
+    <section>
+      Método para crear un "tiempo"
+      <pre><code data-trim>
+setDuration(minutes) {
+  return moment.duration(minutes * 60, 'seconds');
+}
+      </code></pre>
+      La agregamos en nuestra clase Pomodoro.
+      <em>No olvides importar el módulo de moment.</em>
+    </section>
+
+    <section>
+      <h3>Definimos las propiedades del Pomodoro.</h3>
+      Esto en nuestra App.js que lo renderiza, le definimos los minutos para el
+      timer, para el descanso corto y para el descanso largo.
+      <pre><code data-trim>
+<Pomodoro
+     pomodoro={2}
+     shortBreak={1}
+     longBreak={3}
+/>
+      </code></pre>
+    </section>
+
+    <section>
+      Usando los props, agregamos al estado de nuestro componente el valor para
+      mantener la duración del timer.
+      <pre><code>currentDuration: this.setDuration(props.pomodoro),</code></pre>
+    </section>
 
     </div>
   </div>
