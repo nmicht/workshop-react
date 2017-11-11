@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>ReactJS 101</title>
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/simple.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Presentation -->
+      <section>
+        <h2>Primeros Pasos</h2>
+        <h1>ReactJS 101</h1>
+      </section>
+
+      <section>
+        <h3>¿Por qué ReactJS?</h3>
+        <ul>
+          <li>Angular VS React</li>
+          <li>¿Esta de moda?</li>
+          <li>Metodología de componentes</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Michelle Torres</h3>
+        Lead Software Engineer at TiempoDevelopment • Professor at UdG •
+        Founder & CTO at @CORBmx • Speaker • Free software advocate • Crazy
+        <ul style="list-style-type: none">
+          <li><i class="fa fa-envelope" aria-hidden="true"></i> michelle.torres@corb.mx</li>
+          <li><i class="fa fa-facebook-square" aria-hidden="true"></i> fb.com/michelletorres.mx</li>
+          <li><i class="fa fa-twitter-square" aria-hidden="true"></i> nmicht</li>
+          <li><i class="fa fa-github-square" aria-hidden="true"></i> nmicht</li>
+        </ul>
+      </section>
+
+      <section>
+        Vamos a trabajar este taller haciendo un <strong>Pomodorito</strong>
+        <a href="https://github.com/nmicht/pomodorito">https://github.com/nmicht/pomodorito</a>
+      </section>
+
+      <section>
+        <h3>Instalar NPM</h3>
+        Para iniciar, tenemos que instalar NPM.
+        NPM (node package manager) es el gestor de paquetes javascript de
+        NODE.JS, y te recomiendo instalarlo usando.
+        <a href="https://github.com/creationix/nvm/blob/master/README.md">NVM</a>
+        NVM es el Gestor de Versiones de Node.
+      </section>
+
+      <section>
+        <h3>Instalación</h3>
+        Instalar <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a>
+        <pre><code data-trim>npm install -g create-react-app</code></pre>
+        <em>Tip: <strong>-g</strong> lo utilizamos para indicar que será una
+        instalación global.</em>
+      </section>
+
+      <section>
+        <h3>Crea tu primer App</h3>
+        <ol>
+          <li>
+            Crear tu app
+            <pre><code data-trim>create-react-app pomodorito</code></pre>
+          </li>
+          <li>
+            Arrancar el servidor de pruebas <strong>en una consolado por aparte</strong>
+            <pre><code data-trim>
+cd pomodorito/
+npm start
+          </code></pre>
+          </li>
+          Para arrancar el servidor, puedes usar también
+          <pre><code data-trim>yarn start</code></pre>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Estructura de tu App</h3>
+        Todo tu código fuente incluídos assets va en <strong>src</strong>, es la
+        que se compila.<br>
+        <strong>public</strong> tiene todo lo público al servidor web estático.<br>
+        <img src="assets/img/folder.png" alt="">
+      </section>
+
+      <section>
+        Entendiendo el archivo App.js
+      </section>
+
+      <section>
+        Manos a la obra
+      </section>
+
+      <section>
+        <h3>Componente del contador</h3>
+        <ol>
+          <li>
+            Crear carpeta de componentes
+            <pre><code data-trim>
+cd src
+mkdir components
+            </code></pre>
+          </li>
+          <li>
+            Crear carpeta para el componente de contador
+            <pre><code data-trim>
+cd components
+mkdir Counter
+            </code></pre>
+          </li>
+        </ol>
+        <em>Tip: Nuestro componente por estándar se define en CamelCase.</em>
+      </section>
+
+      <section>
+        <ol>
+          <li value="3">
+            Crear archivo del componente como tal
+            <pre><code data-trim>
+cd Counter
+touch Counter.js
+            </code></pre>
+          </li>
+          <li>
+            Crear archivo para manejar la carpeta como módulo
+            <pre><code data-trim>touch index.js</code></pre>
+          </li>
+        </ol>
+        <em>Tip: ReactJS cuando hace un import de un folder, busca un index.js</em>
+      </section>
+
+      <section>
+        En el archivo Counter.js vamos a crear un componente representacional.
+        También se le conoce como <strong>stateless component</strong>.
+        Este componente será el contador de nuestro pomodorito.
+        <pre><code data-trim>
+import React from 'react';
+
+const Counter = () => {
+   return (
+     <span>00:00</span>
+   );
+}
+
+export default Counter;
+        </code></pre>
+      </section>
+
+      <section>
+        Ahora a nuestro index.js le diremos que utilice nuestro componente Counter
+        <pre><code data-trim>
+import Counter from './Counter';
+export default Counter;
+        </code></pre>
+      </section>
+
+      <section>
+        Rendereamos nuestro componente Counter
+        <ol>
+          <li>
+            Importamos nuestro counter
+            <pre><code data-trim>import Counter from './components/Counter';</code></pre>
+          </li>
+          <li>
+            En el render agregamos el componente
+            <pre><code data-trim><Counter /></code></pre>
+          </li>
+        </ol>
+        <pre><code data-trim>
+import Counter from './components/Counter';
+...
+render() {
+    return (
+      <div className="App">
+        ...
+        <Counter />
+      </div>
+    );
+  }
+...
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>Props</h3>
+        <ol>
+          <li>
+            Son las propiedades de los componentes. Estos se le pasan al
+            componente desde el componente padre.
+          </li>
+          <li>
+            En el renderizado del componente se definen como si fueran atributos de
+            html.
+            <pre><code data-trim><Counter minutes={10} seconds={15} /></code></pre>
+          </li>
+          <li>
+            En la declaración del componente se usan a través del objeto
+            <strong>props</strong>.
+            <pre><code data-trim>
+const Counter = (props) => {
+   return (
+     <span>{props.minutes}:{props.seconds}</span>
+   );
+}
+            </code></pre>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Destructurización</h3>
+        Para simplificar el uso de los props usamos la destructurización, que
+        extrae los valores del objeto.
+        <pre><code data-trim>
+const Counter = ({minutes, seconds}) => {
+   return (
+     <span>{minutes}:{seconds}</span>
+   );
+}
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>Componente de acciones Pomodoro</h3>
+        Crear carpeta para el componente de contador
+        <pre><code data-trim>
+cd components
+mkdir Pomodoro
+        </code></pre>
+      </ol>
+      <em>Tip: Nuestro componente por estándar se define en CamelCase.</em>
+    </section>
+
+    <section>
+      <ol>
+        <li value="3">
+          Crear archivo del componente como tal
+          <pre><code data-trim>
+cd Pomodoro
+touch Pomodoro.js
+          </code></pre>
+        </li>
+        <li>
+          Crear archivo para manejar la carpeta como módulo
+          <pre><code data-trim>touch index.js</code></pre>
+        </li>
+      </ol>
+      <em>Tip: ReactJS cuando hace un import de un folder, busca un index.js</em>
+    </section>
+
+    <section>
+      En el archivo Pomodoro.js vamos a renderear todo nuestro Pomodorito
+      <pre><code data-trim>
+import React from 'react';
+import Pomodoro from '../Pomodoro';
+
+const Pomodoro = () => {
+   return (
+     <div>
+         <Counter minutes={10} seconds={15} />
+         //...botones…
+     </div>
+   );
+}
+
+export default Pomodoro;
+      </code></pre>
+    </section>
+
+    <section>
+      Ahora a nuestro index.js le diremos que utilice nuestro componente Pomodoro
+      <pre><code data-trim>
+import Pomodoro from './Pomodoro';
+export default Pomodoro;
+      </code></pre>
+    </section>
+
+    <section>
+      Modificamos nuestro archivo App.js para renderizar el Pomodoro y ya no
+      el Counter.
+      <pre><code data-trim>
+import React, { Component } from 'react';
+import Pomodoro from './components/Pomodoro';
+...
+
+class App extends Component {
+  render() {
+    return (
+        ...
+        <Pomodoro />
+      </div>
+    );
+  }
+}
+
+export default App;
+      </code></pre>
+    </section>
+
+    <section>
+      <h3>La biblioteca moment.js</h3>
+      <a href="https://momentjs.com/">moment</a> se usa para manejo de fechas en
+      JS.
+      <ol>
+        <li>Dentro del folder de Pomodorito instalamos la biblioteca</li>
+        <pre><code>npm install moment --save</code></pre>
+      </ol>
+      <em>Tip: --save es para que se guarde como dependencia en nuestro proyecto.</em>
+    </section>
+
+    <section>
+      <h3>Agregamos moment al Counter</h3>
+      <pre><code data-trim>
+import React from 'react';
+import moment from 'moment';
+
+const Counter = ({time}) => {
+   return (
+     <span>{moment(time).format('mm:ss')}</span>
+   );
+}
+
+export default Counter;
+      </code></pre>
+    </section>
+
+    <section>
+      Indicamos al counter la cantidad de tiempo
+      que queremos mostrar.
+      Este cambio se hace en los props.
+      <pre><code><Counter time={15000} /></code></pre>
+      El tiempo es en milisegundos.
+    </section>
+
+
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    slideNumber: true,
+    dependencies: [
+      { src: 'reveal.js/plugin/markdown/marked.js' },
+      { src: 'reveal.js/plugin/markdown/markdown.js' },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+  </script>
+</body>
+</html>
